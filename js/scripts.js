@@ -56,30 +56,14 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     }
 
-    // const button = document.body.querySelectorAll('.btn');
-    // const response = document.body.querySelector('#displayResponse');
-    // if (button) {
-    //     button.addEventListener('click', event => {
-    //         if (button.innerHTML = 'Fetch') {
-    //             const checkFetch = async () => {
-    //                 const fetchedResponse = await experiment.fetch(user)
-    //                 response.innerHTML = JSON.stringify(fetchedResponse, undefined, 4);    
-    //             };
-    //         } else if (button.innerHTML = 'Variant') {
-    //             const variant = experiment.variant(flagKey);
-
-    //             response.innerHTML = JSON.stringify(variant, undefined, 4);
-    //         }
-    //     })
-    // }
-
+    // Fetch/Variant and Display
     const response = document.querySelector('#displayResponse');
     document.querySelectorAll('.action').forEach(button => {
         button.addEventListener('click', async () => {
             if (button.innerHTML == 'Fetch') {
                 const fetchedResponse = await experiment.fetch(user);
 
-                if (fetchedResponse != '{}') {
+                if (fetchedResponse) {
                     response.innerHTML = JSON.stringify(fetchedResponse, undefined, 4);    
                 } else {
                     response.innerHTML = "Error with Fetch Request";
@@ -88,10 +72,16 @@ window.addEventListener('DOMContentLoaded', event => {
             } else if (button.innerHTML == 'Variant') {
                 const variant = experiment.variant(flagKey);
 
-                response.innerHTML = JSON.stringify(variant, undefined, 4);
+                if (variant) {
+                    response.innerHTML = JSON.stringify(variant, undefined, 4);
+                } else {
+                    response.innerHTML = "Error with Variant Request";
+                }
             }
         })
     })
+
+    // TODO - Track Exposures
 
 });
 
