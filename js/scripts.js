@@ -75,17 +75,16 @@ window.addEventListener('DOMContentLoaded', event => {
 
     const response = document.querySelector('#displayResponse');
     document.querySelectorAll('.action').forEach(button => {
-        button.addEventListener('click', event => {
+        button.addEventListener('click', async () => {
             if (button.innerHTML == 'Fetch') {
-                const fetch = async () => {
-                    const fetchedResponse = await experiment.fetch(user);
+                const fetchedResponse = await experiment.fetch(user);
 
-                    if (fetchedResponse) {
-                        response.innerHTML = JSON.stringify(fetchedResponse, undefined, 4);    
-                    } else {
-                        response.innerHTML = "Error with Fetch Request";
-                    }
-                };
+                if (fetchedResponse != '{}') {
+                    response.innerHTML = JSON.stringify(fetchedResponse, undefined, 4);    
+                } else {
+                    response.innerHTML = "Error with Fetch Request";
+                }
+
             } else if (button.innerHTML == 'Variant') {
                 const variant = experiment.variant(flagKey);
 
