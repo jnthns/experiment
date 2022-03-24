@@ -3,6 +3,8 @@
 var userObject = {};
 
 window.addEventListener('DOMContentLoaded', event => {
+    // TODO - add error if analytics not loaded 
+    
     const onKeySubmit = document.querySelector('#onKeySubmit');
     if (onKeySubmit) {
         onKeySubmit.addEventListener('click', () => {
@@ -77,6 +79,14 @@ window.addEventListener('DOMContentLoaded', event => {
                             response.innerHTML = JSON.stringify(variant, undefined, 4);
                         } else {
                             response.innerHTML = "Error with Variant Request";
+                        }
+                    } else if (button.innerHTML == 'Exposure') {
+                        const exposure = experiment.exposure(flagKey);
+
+                        if (exposure) {
+                            response.innerHTML = JSON.stringify(exposure, undefined, 4);
+                        } else {
+                            response.innerHTML = "Error with Exposure";
                         }
                     }
                 })

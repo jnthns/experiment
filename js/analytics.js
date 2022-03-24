@@ -19,23 +19,33 @@ var menuExpanded = () => {amplitude.logEvent("Expanded Menu")};
 var menuClosed = () => {amplitude.logEvent("Closed Menu")};
 
 window.addEventListener('DOMContentLoaded', event => {
-
     const analyticsInit = document.querySelector('#analyticsInit');
     if (analyticsInit) {
         analyticsInit.addEventListener('click', () => {
-            const analyticsKey = document.querySelector('#analyticsKey').value;
-            const userId = document.querySelector('#userId').value;
+            var analyticsKey = document.querySelector('#analyticsKey').value;
+            var userId = document.querySelector('#userId').value;
 
             if (analyticsKey.length != 32) {
                 alert('Please enter your Analytics Key');
+
             } else if (analyticsKey.length == 32) {
+
                 if (userId) {
                     amplitudeInstance = amplitude.getInstance().init(analyticsKey, userId);
                     document.querySelector('#analyticsLoadMessage').innerHTML = 'Analytics Initialized for ' + String(userId);
+                    
+                    localStorage.setItem('exp_test_analytics_key', analyticsKey);
+                    localStorage.setItem('exp_test_user_id', userId);
+
+                } else {
+                    amplitudeInstance = amplitude.getInstance().init(analyticsKey);
+                    document.querySelector('#analyticsLoadMessage').innerHTML = 'Analytics Initialized without User ID';
+                    
+                    localStorage.setItem('exp_test_analytics_key', analyticsKey);
                 }
             }
-        }
-    )}
+        })
+    }
 
     // Toggle the side navigation
     const sidebarToggle = document.body.querySelector('#sidebarToggle');
