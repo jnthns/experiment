@@ -7,47 +7,35 @@
 // Scripts
 
 // Amplitude
-const apiKey = 'f2e177f8439cb99ac2297f32dc892a1c'
-const userId = 'Visitor 2';
-const deviceId = '2ea0e37b-264a-5cfa-b449-424703520a68';
+// const apiKey = 'f2e177f8439cb99ac2297f32dc892a1c'
+// const userId = 'Visitor 2';
+// const deviceId = '2ea0e37b-264a-5cfa-b449-424703520a68';
 
-amplitude.getInstance().init(apiKey, userId);
-
-// const deploymentKey = document.querySelector('#deploymentKey');
-// const flagKey = document.querySelector('#flagKey');
-
-// const onKeySubmit = () => {
-//     if (deploymentKey == '' || flagKey == '') {
-//         alert('Please enter your Experiment Keys');
-//     } else if (deploymentKey.length >= 39 || flagKey.length >= 1) {
-//         localStorage.setItem('deploymentKey', deploymentKey.value);
-//         localStorage.setItem('flagKey', flagKey.value); 
-//     }
-
-//     const experiment = Experiment.Experiment.initializeWithAmplitudeAnalytics(deploymentKey);
-// }
-
-// // const deploymentKey = 'client-19YzfjOdwGMpwK6OU0uKGz8rqXh57QSV';
-// // const flagKey = 'sidebar';
-
-// const user = {
-//     user_id: userId,
-//     device_id: null,
-//     user_properties: {
-//         // 'premium': true,
-//     }
-// };
+var amplitudeInstance;
 
 // Events
-var eventProperties = {
-    'sidebar expanded': true
-}
-
-var homepageViewed = () => {amplitude.logEvent("Viewed Home Page", eventProperties)};
+// var homepageViewed = () => {amplitude.logEvent("Viewed Home Page", eventProperties)};
 var menuExpanded = () => {amplitude.logEvent("Expanded Menu")};
 var menuClosed = () => {amplitude.logEvent("Closed Menu")};
 
 window.addEventListener('DOMContentLoaded', event => {
+
+    const analyticsInit = document.querySelector('#analyticsInit');
+    if (analyticsInit) {
+        analyticsInit.addEventListener('click', () => {
+            const analyticsKey = document.querySelector('#analyticsKey').value;
+            const userId = document.querySelector('#userId').value;
+
+            if (analyticsKey.length != 32) {
+                alert('Please enter your Analytics Key');
+            } else if (analyticsKey.length == 32) {
+                if (userId) {
+                    amplitudeInstance = amplitude.getInstance().init(analyticsKey, userId);
+                    document.querySelector('#analyticsLoadMessage').innerHTML = 'Analytics Initialized for ' + String(userId);
+                }
+            }
+        }
+    )}
 
     // Toggle the side navigation
     const sidebarToggle = document.body.querySelector('#sidebarToggle');
@@ -68,36 +56,6 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         });
     }
-        
-
-
-    // // Fetch/Variant and Display
-    // const response = document.querySelector('#displayResponse');
-    // document.querySelectorAll('.experiment').forEach(button => {
-    //     button.addEventListener('click', async () => {
-    //         if (button.innerHTML == 'Fetch') {
-    //             const fetchedResponse = await experiment.fetch(user);
-
-    //             if (fetchedResponse) {
-    //                 response.innerHTML = JSON.stringify(fetchedResponse, undefined, 4);    
-    //             } else {
-    //                 response.innerHTML = "Error with Fetch Request";
-    //             }
-
-    //         } else if (button.innerHTML == 'Variant') {
-    //             const variant = experiment.variant(flagKey);
-
-    //             if (variant) {
-    //                 response.innerHTML = JSON.stringify(variant, undefined, 4);
-    //             } else {
-    //                 response.innerHTML = "Error with Variant Request";
-    //             }
-    //         }
-    //     })
-    // })
-
-    // TODO - Track Exposures
-
 });
 
 
