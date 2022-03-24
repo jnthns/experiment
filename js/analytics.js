@@ -11,6 +11,8 @@
 // const userId = 'Visitor 2';
 // const deviceId = '2ea0e37b-264a-5cfa-b449-424703520a68';
 
+// TODO - store keys for ease of access 
+
 var amplitudeInstance;
 var analyticsInitialized = false;
 

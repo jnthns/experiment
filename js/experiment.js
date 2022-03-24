@@ -60,6 +60,9 @@ window.addEventListener('DOMContentLoaded', event => {
                 document.querySelector('#loadMessage').style.color = 'green';
                 document.querySelector('#loadMessage').innerHTML = 'Experiment Initialized';
 
+                localStorage.setItem('exp_test_deployment_key', deploymentKey);
+                localStorage.setItem('exp_test_flag_key', flagKey);
+
             } else {
                 document.querySelector('#loadMessage').style.color = 'red';
                 document.querySelector('#loadMessage').innerHTML = 'Analytics not initialized';
