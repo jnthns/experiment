@@ -20,12 +20,12 @@
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light">Sidebar</div>
                 <div class="list-group list-group-flush">
-                    <!-- <a class="list-group-item list-group-item-action list-group-item-light p-3" href="./routes/dashboard.html">Dashboard</a> -->
-                    <!-- <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Shortcuts</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Overview</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a> -->
+                    <!-- <a class="list-group-item list-group-item-action list-group-item-light p-3" href="./routes/dashboard.html">Dashboard</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-2" id='previousAnalyticsKey'>Previous Analytics Key</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-2" id='previousUserId'>Overview</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-2" href="#!">Events</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-2" href="#!">Profile</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-2" href="#!">Status</a> -->
                 </div>
             </div>
             <!-- Page content wrapper-->
@@ -37,7 +37,7 @@
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                                <li class="nav-item active"><a class="nav-link" href="/">@Jon Shek</a></li>
+                                <li class="nav-item active"><a class="nav-link" href="/">© Jon Shek</a></li>
                                <!--  <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -51,14 +51,14 @@
                             </ul>
                         </div>
                     </div>
-                </nav>
+                </nav><br>
                 <!-- Page content-->
                 <div class="container-fluid">
                     <h1>Experiment Test Environment</h1>
                     <p>Test your experiment or flag by filling out the fields below. You'll receive the raw responses from Amplitude at the bottom of the page.</p>
                     <div>
                         <h3 class="mt-4">Analytics Configuration</h3>
-                        <p>Enter your Analytics API Key and your User ID. If you don't set a User ID here, you will need to set a Device ID below. The User ID that you set here will also be passed to Experiment.</p>
+                        <p>Enter your Analytics API Key and your User ID. If you don't set a User ID here, you will need to set a Device ID below. The User ID that you set here will also be passed to Experiment. You can also change the user ID and init again, which will restart the instance with the new user ID if you want to fetch for a different user. Note that a new device ID will be auto-generated for a new user ID if you don't set one below.</p>
                       <div class="form-row align-items-center">
                         <div class="col-sm-4 my-1">
                           <b><label class="sr-only" for="inlineFormInputGroupUsername">Analytics API Key</label></b>
@@ -124,6 +124,7 @@
                         <button class='btn btn-warning experiment'>Exposure</button>
                         <pre style="color:green;" id="displayResponse">Response displayed here</pre>
                     </p>
+                    <br>
                 </div>
             </div>
         </div>
