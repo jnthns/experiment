@@ -5,7 +5,7 @@
 */
 // 
 // Scripts
-// 
+
 // Amplitude
 const apiKey = 'f2e177f8439cb99ac2297f32dc892a1c'
 const deploymentKey = 'client-19YzfjOdwGMpwK6OU0uKGz8rqXh57QSV';
@@ -24,14 +24,6 @@ const user = {
     user_properties: {
         // 'premium': true,
     }
-};
-
-// Fetch for user
-const response = async () => {
-    const fetchedResponse = await experiment.fetch(user)
-    const fetchValues = document.body.querySelector('#fetchValues');
-
-    fetchValues.innerHTML = JSON.stringify(fetchedResponse, undefined, 4);    
 };
 
 // Events
@@ -61,9 +53,46 @@ window.addEventListener('DOMContentLoaded', event => {
             } else {
                 menuExpanded();
             }
-
         });
     }
+
+    // const button = document.body.querySelectorAll('.btn');
+    // const response = document.body.querySelector('#displayResponse');
+    // if (button) {
+    //     button.addEventListener('click', event => {
+    //         if (button.innerHTML = 'Fetch') {
+    //             const checkFetch = async () => {
+    //                 const fetchedResponse = await experiment.fetch(user)
+    //                 response.innerHTML = JSON.stringify(fetchedResponse, undefined, 4);    
+    //             };
+    //         } else if (button.innerHTML = 'Variant') {
+    //             const variant = experiment.variant(flagKey);
+
+    //             response.innerHTML = JSON.stringify(variant, undefined, 4);
+    //         }
+    //     })
+    // }
+
+    const response = document.querySelector('#displayResponse');
+    document.querySelectorAll('.action').forEach(button => {
+        button.addEventListener('click', event => {
+            if (button.innerHTML == 'Fetch') {
+                const fetch = async () => {
+                    const fetchedResponse = await experiment.fetch(user);
+
+                    if (fetchedResponse) {
+                        response.innerHTML = JSON.stringify(fetchedResponse, undefined, 4);    
+                    } else {
+                        response.innerHTML = "Error with Fetch Request";
+                    }
+                };
+            } else if (button.innerHTML == 'Variant') {
+                const variant = experiment.variant(flagKey);
+
+                response.innerHTML = JSON.stringify(variant, undefined, 4);
+            }
+        })
+    })
 
 });
 
