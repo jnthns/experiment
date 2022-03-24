@@ -54,8 +54,15 @@ window.addEventListener('DOMContentLoaded', event => {
                 }
             }
 
-            const experiment = Experiment.Experiment.initializeWithAmplitudeAnalytics(deploymentKey);
-            document.querySelector('#loadMessage').innerHTML = 'Experiment Initialized';
+            if (analyticsInitialized) {
+                const experiment = Experiment.Experiment.initializeWithAmplitudeAnalytics(deploymentKey);
+                document.querySelector('#loadMessage').style.color = 'green';
+                document.querySelector('#loadMessage').innerHTML = 'Experiment Initialized';
+            } else {
+                document.querySelector('#loadMessage').style.color = 'red';
+                document.querySelector('#loadMessage').innerHTML = 'Analytics not initialized';
+            }
+            
 
             // Fetch/Variant and Display
             const response = document.querySelector('#displayResponse');

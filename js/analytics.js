@@ -33,6 +33,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
                 if (userId) {
                     amplitudeInstance = amplitude.getInstance().init(analyticsKey, userId);
+                    analyticsInitialized = true;
                     document.querySelector('#analyticsLoadMessage').innerHTML = 'Analytics Initialized for ' + String(userId);
                     
                     localStorage.setItem('exp_test_analytics_key', analyticsKey);
@@ -40,14 +41,13 @@ window.addEventListener('DOMContentLoaded', event => {
 
                 } else {
                     amplitudeInstance = amplitude.getInstance().init(analyticsKey);
+                    analyticsInitialized = true;
                     document.querySelector('#analyticsLoadMessage').innerHTML = 'Analytics Initialized without User ID';
                     
                     localStorage.setItem('exp_test_analytics_key', analyticsKey);
                 }
             }
         })
-
-        analyticsInitialized = true;
     }
 
     // Toggle the side navigation
