@@ -1,5 +1,6 @@
 // const deploymentKey = 'client-19YzfjOdwGMpwK6OU0uKGz8rqXh57QSV';
 // const flagKey = 'sidebar';
+var userObject = {};
 
 window.addEventListener('DOMContentLoaded', event => {
     const onKeySubmit = document.querySelector('#onKeySubmit');
@@ -26,6 +27,8 @@ window.addEventListener('DOMContentLoaded', event => {
                                     user_properties: parsedJSON
                                 }
 
+                                userObject = user;
+
                                 document.querySelector('#idCheck').innerHTML = JSON.stringify(user, undefined, 4);
                             } else {
                                 document.querySelector('#idCheck').innerHTML = 'User properties not a valid JSON';
@@ -41,6 +44,8 @@ window.addEventListener('DOMContentLoaded', event => {
                                 device_id: deviceId
                             };
 
+                        userObject = user;
+
                         document.querySelector('#idCheck').innerHTML = JSON.stringify(user, undefined, 4);
                     }
                     
@@ -49,7 +54,7 @@ window.addEventListener('DOMContentLoaded', event => {
                 }
             }
 
-            // const experiment = Experiment.Experiment.initializeWithAmplitudeAnalytics(deploymentKey);
+            const experiment = Experiment.Experiment.initializeWithAmplitudeAnalytics(deploymentKey);
             document.querySelector('#loadMessage').innerHTML = 'Experiment Initialized';
 
             // Fetch/Variant and Display
@@ -57,7 +62,7 @@ window.addEventListener('DOMContentLoaded', event => {
             document.querySelectorAll('.experiment').forEach(button => {
                 button.addEventListener('click', async () => {
                     if (button.innerHTML == 'Fetch') {
-                        const fetchedResponse = await experiment.fetch(user);
+                        const fetchedResponse = await experiment.fetch(userObject);
 
                         if (fetchedResponse) {
                             response.innerHTML = JSON.stringify(fetchedResponse, undefined, 4);    
