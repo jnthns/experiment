@@ -21,6 +21,7 @@ var menuClosed = () => {amplitude.logEvent("Closed Menu")};
 
 window.addEventListener('DOMContentLoaded', event => {
     const analyticsInit = document.querySelector('#analyticsInit');
+
     if (analyticsInit) {
         analyticsInit.addEventListener('click', () => {
             var analyticsKey = document.querySelector('#analyticsKey').value;
@@ -30,7 +31,6 @@ window.addEventListener('DOMContentLoaded', event => {
                 alert('Please enter your Analytics Key');
 
             } else if (analyticsKey.length == 32) {
-
                 if (userId) {
                     amplitudeInstance = amplitude.getInstance().init(analyticsKey, userId);
                     analyticsInitialized = true;
@@ -42,8 +42,8 @@ window.addEventListener('DOMContentLoaded', event => {
                 } else {
                     amplitudeInstance = amplitude.getInstance().init(analyticsKey);
                     analyticsInitialized = true;
+
                     document.querySelector('#analyticsLoadMessage').innerHTML = 'Analytics Initialized without User ID';
-                    
                     localStorage.setItem('exp_test_analytics_key', analyticsKey);
                 }
             }

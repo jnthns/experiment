@@ -4,6 +4,7 @@ var userObject = {};
 
 window.addEventListener('DOMContentLoaded', event => {
     const onKeySubmit = document.querySelector('#onKeySubmit');
+
     if (onKeySubmit) {
         onKeySubmit.addEventListener('click', () => {
             const deploymentKey = document.querySelector('#deploymentKey').value;
@@ -58,11 +59,14 @@ window.addEventListener('DOMContentLoaded', event => {
                 const experiment = Experiment.Experiment.initializeWithAmplitudeAnalytics(deploymentKey);
                 document.querySelector('#loadMessage').style.color = 'green';
                 document.querySelector('#loadMessage').innerHTML = 'Experiment Initialized';
+
             } else {
                 document.querySelector('#loadMessage').style.color = 'red';
                 document.querySelector('#loadMessage').innerHTML = 'Analytics not initialized';
             }
-            
+
+            const experiment = Experiment.Experiment.initializeWithAmplitudeAnalytics(deploymentKey);
+            document.querySelector('#loadMessage').innerHTML = 'Experiment Initialized';
 
             // Fetch/Variant and Display
             const response = document.querySelector('#displayResponse');
