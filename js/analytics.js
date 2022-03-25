@@ -3,13 +3,6 @@
 * Copyright 2013-2021 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-simple-sidebar/blob/master/LICENSE)
 */
-// 
-// Scripts
-
-// Amplitude
-// const apiKey = 'f2e177f8439cb99ac2297f32dc892a1c'
-// const userId = 'Visitor 2';
-// const deviceId = '2ea0e37b-264a-5cfa-b449-424703520a68';
 
 // TODO - store keys for ease of access 
 

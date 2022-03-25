@@ -1,5 +1,3 @@
-// const deploymentKey = 'client-19YzfjOdwGMpwK6OU0uKGz8rqXh57QSV';
-// const flagKey = 'sidebar';
 var userObject = {};
 
 window.addEventListener('DOMContentLoaded', event => {
