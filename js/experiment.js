@@ -93,11 +93,14 @@ window.addEventListener('DOMContentLoaded', event => {
                     } else if (button.innerHTML == 'Exposure') {
                         const exposure = experiment.exposure(flagKey);
 
-                        if (exposure) {
-                            response.innerHTML = JSON.stringify(exposure, undefined, 4);
-                        } else {
-                            response.innerHTML = "Error with Exposure";
-                        }
+                        response.innerHTML = "Exposure Event Fired - check User Lookup"
+
+                        // if (exposure) {
+                        //     response.innerHTML = JSON.stringify(exposure, undefined, 4);
+                        // } else {
+                        //     console.log(JSON.stringify(exposure))
+                        //     response.innerHTML = "Error with Exposure";
+                        // }
                     }
                 })
             })
