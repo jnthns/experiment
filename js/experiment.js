@@ -29,13 +29,14 @@ window.addEventListener('DOMContentLoaded', event => {
                                 userObject = user;
 
                                 document.querySelector('#idCheck').innerHTML = JSON.stringify(user, undefined, 4);
+
                             } else {
                                 document.querySelector('#idCheck').innerHTML = 'User properties not a valid JSON';
                             }
 
                         } catch (e) {
                             console.error(e)
-                            document.querySelector('#idCheck').innerHTML = 'Not a valid JSON';
+                            document.querySelector('#idCheck').innerHTML = 'Contextual User Properties not in valid JSON format';
                         }
                     } else {
                         const user = {
@@ -60,6 +61,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
                 localStorage.setItem('exp_test_deployment_key', deploymentKey);
                 localStorage.setItem('exp_test_flag_key', flagKey);
+                localStorage.setItem('exp_test_device_id', deviceId);
 
             } else {
                 document.querySelector('#loadMessage').style.color = 'red';
@@ -90,17 +92,12 @@ window.addEventListener('DOMContentLoaded', event => {
                         } else {
                             response.innerHTML = "Error with Variant Request";
                         }
+                        
                     } else if (button.innerHTML == 'Exposure') {
                         const exposure = experiment.exposure(flagKey);
 
-                        response.innerHTML = "Exposure Event Fired - check User Lookup!"
+                        response.innerHTML = "Exposure Event Fired - check User Lookup!";
 
-                        // if (exposure) {
-                        //     response.innerHTML = JSON.stringify(exposure, undefined, 4);
-                        // } else {
-                        //     console.log(JSON.stringify(exposure))
-                        //     response.innerHTML = "Error with Exposure";
-                        // }
                     }
                 })
             })
