@@ -1,5 +1,5 @@
-v1.1 
-Add Payloads 
-
-v2.0
+v2
 Pagination
+Change landingpage to same index.html without extra fields
+Add more descriptive messaging 
+Fix table

@@ -1,5 +1,9 @@
 var userObject = {};
 
+var landingPage = () => {
+    window.location.href = 'http://localhost:8000/routes/landingpage.html';
+}
+
 window.addEventListener('DOMContentLoaded', event => {
     const onKeySubmit = document.querySelector('#onKeySubmit');
 
@@ -92,13 +96,13 @@ window.addEventListener('DOMContentLoaded', event => {
                         } else {
                             response.innerHTML = "Error with Variant Request";
                         }
-                        
+
                     } else if (button.innerHTML == 'Exposure') {
                         const exposure = experiment.exposure(flagKey);
 
                         response.innerHTML = "Exposure Event Fired - check User Lookup!";
 
-                    }
+                    } 
                 })
             })
         })

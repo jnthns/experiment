@@ -88,6 +88,7 @@
                               </tbody>
                             </table>
                         </div>
+                        <hr>
                         <h3 class="mt-4">Analytics Configuration</h3>
                         <p>Enter your Analytics API Key and your User ID. If you don't set a User ID here, you will need to set a Device ID below. The User ID that you set here will also be passed to Experiment. You can also change the user ID and init again, which will restart the instance with the new user ID if you want to fetch for a different user. Note that a new device ID will be auto-generated for a new user ID if you don't set one below.</p>
                       <div class="form-row align-items-center">
@@ -148,11 +149,14 @@
                         Fetch when all of the above is filled out, which will generate an Assignment event and return a response which will display below.<br>
                         After fetch, you can hit Fetch to access the Variant value and payload.<br>
                         Finally, you can hit Exposure to generate the Exposure event in your Analytics instance.
+                        <br><br>
+                        If you want to simulate a multiple page flow, like an onboarding funnel, you can fetch on this page first then hit Next Page, where you can fetch again with new properties.  
                     </p>
                     <p>
                         <button class='btn btn-success experiment'>Fetch</button>
                         <button class='btn btn-danger experiment'>Variant</button>
                         <button class='btn btn-warning experiment'>Exposure</button>
+                        <button class='btn btn-warning experiment' onclick='landingPage();'>Next Page</button>
                         <pre style="color:green;" id="displayResponse">Response displayed here</pre>
                     </p>
                     <br>
