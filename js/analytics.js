@@ -15,14 +15,15 @@ var menuExpanded = () => {amplitude.logEvent("Expanded Menu")};
 var menuClosed = () => {amplitude.logEvent("Closed Menu")};
 
 window.addEventListener('DOMContentLoaded', event => {
-    const infoTable = document.querySelector('#savedInfo');
 
-    if (infoTable) {
-        document.querySelector('#savedApiKey').innerHTML = localStorage.getItem('exp_test_analytics_key');
-        document.querySelector('#savedExpKey').innerHTML = localStorage.getItem('exp_test_deployment_key');
-        document.querySelector('#savedFlagKey').innerHTML = localStorage.getItem('exp_test_flag_key');
-        document.querySelector('#savedUserId').innerHTML = localStorage.getItem('exp_test_user_id');
-        document.querySelector('#savedDeviceId').innerHTML = localStorage.getItem('exp_test_device_id');
+    var labels = document.querySelectorAll('.sr-only');
+
+    if (labels) {
+        labels[0].innerHTML += ' last used: ' + localStorage.getItem('exp_test_analytics_key');
+        labels[1].innerHTML += ' last used: ' + localStorage.getItem('exp_test_user_id');
+        labels[2].innerHTML += ' last used: ' + localStorage.getItem('exp_test_deployment_key');
+        labels[3].innerHTML += ' last used: ' + localStorage.getItem('exp_test_flag_key');
+        labels[4].innerHTML += ' last used: ' + localStorage.getItem('exp_test_device_id');
     }
 
     const analyticsInit = document.querySelector('#analyticsInit');
