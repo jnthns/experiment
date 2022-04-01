@@ -1,7 +1,7 @@
 var userObject = {};
 
 var landingPage = () => {
-    window.location.href = 'http://localhost:8000/routes/landingpage.html';
+    window.location.href = 'http://localhost:8000/routes/page2.html'; // TODO
 }
 
 window.addEventListener('DOMContentLoaded', event => {
@@ -31,6 +31,7 @@ window.addEventListener('DOMContentLoaded', event => {
                                 }
 
                                 userObject = user;
+                                localStorage.setItem("userObject", JSON.stringify(userObject));
 
                                 document.querySelector('#idCheck').innerHTML = JSON.stringify(user, undefined, 4);
 
@@ -49,6 +50,7 @@ window.addEventListener('DOMContentLoaded', event => {
                             };
 
                         userObject = user;
+                        localStorage.setItem('userObject', userObject);
 
                         document.querySelector('#idCheck').innerHTML = JSON.stringify(user, undefined, 4);
                     }
@@ -59,7 +61,10 @@ window.addEventListener('DOMContentLoaded', event => {
             }
 
             if (analyticsInitialized) {
-                const experiment = Experiment.Experiment.initializeWithAmplitudeAnalytics(deploymentKey);
+                const experiment = Experiment.Experiment.initializeWithAmplitudeAnalytics(deploymentKey, {
+                    automaticExposureTracking: false
+                });
+
                 document.querySelector('#loadMessage').style.color = 'green';
                 document.querySelector('#loadMessage').innerHTML = 'Experiment Initialized';
 
@@ -75,7 +80,7 @@ window.addEventListener('DOMContentLoaded', event => {
             const experiment = Experiment.Experiment.initializeWithAmplitudeAnalytics(deploymentKey);
             document.querySelector('#loadMessage').innerHTML = 'Experiment Initialized';
 
-            // Fetch/Variant and Display
+            // Fetch/Variant and Display - Page 1
             const response = document.querySelector('#displayResponse');
             document.querySelectorAll('.experiment').forEach(button => {
                 button.addEventListener('click', async () => {

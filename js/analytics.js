@@ -18,12 +18,14 @@ window.addEventListener('DOMContentLoaded', event => {
 
     var labels = document.querySelectorAll('.sr-only');
 
-    if (labels) {
+    if (labels.length > 0) {
         labels[0].innerHTML += ' last used: ' + localStorage.getItem('exp_test_analytics_key');
         labels[1].innerHTML += ' last used: ' + localStorage.getItem('exp_test_user_id');
         labels[2].innerHTML += ' last used: ' + localStorage.getItem('exp_test_deployment_key');
         labels[3].innerHTML += ' last used: ' + localStorage.getItem('exp_test_flag_key');
         labels[4].innerHTML += ' last used: ' + localStorage.getItem('exp_test_device_id');
+    } else {
+        return true;
     }
 
     const analyticsInit = document.querySelector('#analyticsInit');
@@ -75,6 +77,7 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         });
     }
+    
 });
 
 
