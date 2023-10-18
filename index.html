@@ -28,6 +28,13 @@
           });
           
           window.amplitude.add(sessionReplayTracking);
+
+          const trackInitClick = (id) => {
+            const eventProperties = {
+              feature: id
+            }
+            window.amplitude.track('Init Clicked', eventProperties);
+          }
         </script>
     </head>
     <body>
@@ -89,7 +96,7 @@
                         </div>
                         <br>
                         <div class="col-auto my-1">
-                          <button class="btn btn-info" id="analyticsInit">Initialize Analytics</button>
+                          <button class="btn btn-info" id="analyticsInit" onClick="trackInitClick(this.id)">Initialize Analytics</button>
                         </div><br>
                         <p id='analyticsLoadMessage' style='color: green'></p>
                     </div><hr>
@@ -121,7 +128,7 @@
                         </div>
                         <br>
                         <div class="col-auto my-1">
-                          <button class="btn btn-primary" id="onKeySubmit">Initialize Experiment</button>
+                          <button class="btn btn-primary" id="onKeySubmit" onClick="trackInitClick(this.id)">Initialize Experiment</button>
                         </div><br>
                         <p id='loadMessage' style='color: green'></p>
                         <pre id='idCheck' style='color: blue'></pre>
