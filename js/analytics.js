@@ -1,11 +1,3 @@
-/*!
-* Start Bootstrap - Simple Sidebar v6.0.3 (https://startbootstrap.com/template/simple-sidebar)
-* Copyright 2013-2021 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-simple-sidebar/blob/master/LICENSE)
-*/
-
-// TODO - store keys for ease of access 
-
 var amplitudeInstance;
 var analyticsInitialized = false;
 
@@ -36,7 +28,7 @@ window.addEventListener('DOMContentLoaded', event => {
             var userId = document.querySelector('#userId').value;
 
             if (analyticsKey.length != 32) {
-                alert('Please enter a valid Analytics Key');
+                document.querySelector('#analyticsLoadMessage').innerHTML = 'Please enter a valid Analytics Key';
 
             } else if (analyticsKey.length == 32) {
                 if (userId) {
