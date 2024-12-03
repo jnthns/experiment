@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Home</title>
+    <link rel="stylesheet" href="css/styles1.css">
+    <script src="https://cdn.amplitude.com/script/f2e177f8439cb99ac2297f32dc892a1c.js"></script>
+    <script>
+        window.amplitude.init('f2e177f8439cb99ac2297f32dc892a1c', {
+          autocapture: {
+            elementInteractions: false,
+            pageViews: true,
+            sessions: true
+        }
+        });
+    </script>
+    <script>
+        const addPromise = amplitude.add(sessionReplayTracking).promise;
+        addPromise.then(() => {
+            amplitude.remove(sessionReplayTracking).promise;
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Experiment</a>
+        <a href="home.html">Home</a>
+        <a href="article.html">Article</a>
+        <a href="about.html">About</a>
+    </nav>
+    <header>
+        <h1>Home</h1>
+        <p>Your daily dose of inspiration and stories.</p>
+    </header>
+    <main>
+        <section>
+            <h2>Recent Posts</h2>
+            <article>
+                <h3><a href="article.html">Understanding Modern Web Design</a></h3>
+                <p>Learn the principles of modern web design and how to apply them.</p>
+            </article>
+            <article>
+                <h3><a href="article.html">Why Blogging is Still Relevant in 2024</a></h3>
+                <p>Explore the enduring appeal of blogging in a fast-paced digital world.</p>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
