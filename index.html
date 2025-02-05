@@ -36,6 +36,22 @@
             window.amplitude.track('Init Clicked', eventProperties);
           }
         </script>
+        <script>
+          window.experiment = Experiment.Experiment.initializeWithAmplitudeAnalytics(
+              'client-19YzfjOdwGMpwK6OU0uKGz8rqXh57QSV'
+          );
+
+          console.log("Experiment Initialized")
+            
+          experiment.fetch();
+          
+          const variant = experiment.variant('sidebar');
+          if (variant.value === 'control') {
+              const variantValue = variant.value
+          } else {
+              const variantValue = variant.value
+          }
+        </script>
     </head>
     <body>
         <div class="d-flex" id="wrapper">
