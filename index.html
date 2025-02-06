@@ -16,11 +16,7 @@
         <script>
           window.amplitude.init('f2e177f8439cb99ac2297f32dc892a1c', {
             fetchRemoteConfig: true,
-            autocapture: {
-              elementInteractions: true,
-              pageViews: true,
-              sessions: true
-            }
+            autocapture: true
           });
           
           const sessionReplayTracking = window.sessionReplay.plugin({
