@@ -15,6 +15,7 @@
         <!-- <script type="text/javascript" src="https://cdn.amplitude.com/script/f2e177f8439cb99ac2297f32dc892a1c.experiment.js"></script> -->
         <script>
           window.amplitude.init('f2e177f8439cb99ac2297f32dc892a1c', {
+            fetchRemoteConfig: true,
             autocapture: {
               elementInteractions: true,
               pageViews: true,
@@ -23,7 +24,7 @@
           });
           
           const sessionReplayTracking = window.sessionReplay.plugin({
-            sampleRate: 1 // collects 100% of sessions
+            sampleRate: 1 
           });
           
           window.amplitude.add(sessionReplayTracking);
