@@ -17,7 +17,7 @@
           class AdobeEnrichmentPlugin {
             constructor() {
               this.name = "AdobeDataEnrichment";
-              this.type = "ENRICHMENT";
+              this.type = "enrichment";
             }
 
             async setup(config) {
@@ -41,13 +41,6 @@
             fetchRemoteConfig: true,
             autocapture: true
           });
-          
-          // const sessionReplayTracking = window.sessionReplay.plugin({
-          //   sampleRate: 1 
-          // });
-          
-          // window.amplitude.add(sessionReplayTracking);
-          // console.log(sessionReplayTracking)
 
           // Ensure Amplitude is initialized before adding the plugin
           if (window.amplitude) {
